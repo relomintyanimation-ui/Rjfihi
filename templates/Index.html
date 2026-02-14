@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>YouTube Bot Controller</title></head>
+<body>
+    <h1>🎥 YouTube Bot Controller</h1>
+    <p>Use the API endpoints or this interface.</p>
+    <p>Bot Status: <span id="status">Loading...</span></p>
+    <script>
+        setInterval(async () => {
+            const res = await fetch('/api/status');
+            const data = await res.json();
+            document.getElementById('status').innerText = 
+                data.running ? `Running (${data.current}/${data.target})` : 'Stopped';
+        }, 2000);
+    </script>
+</body>
+  </html>
